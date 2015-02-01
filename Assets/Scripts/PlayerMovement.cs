@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour {
 
 	Animator anim;
-	bool isJumping = false;
+	public bool isJumping = false;
 	public float speed = 3f;
 	public float jumpForce = 800f;
 
@@ -28,6 +28,12 @@ public class PlayerMovement : MonoBehaviour {
 		if(coll.collider.tag == "Ground") {
 			isJumping = false;
 			anim.SetBool("IsWalking", true);
+		}
+	}
+
+	void OnCollisionStay(Collision collision) {
+		foreach (ContactPoint contact in collision.contacts) {
+			Debug.DrawRay(contact.point, contact.normal, Color.white);
 		}
 	}
 }

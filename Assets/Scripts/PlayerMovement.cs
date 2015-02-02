@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour {
 			if(onPlatform == true)forwardForce = 400;
 			else forwardForce = 0;*/
 
-			rigidbody.AddForce(new Vector3((onPlatform)?200:0, jumpForce, 0));
+			rigidbody.AddForce(new Vector3((onPlatform)?250:0, jumpForce, 0));
 		}
 		else if(onPlatform == true);
 		else {
@@ -33,8 +33,7 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 	void OnCollisionEnter (Collision coll) {
-		if(coll.collider.tag == "Ground") {
-			isJumping = false;
+		if(coll.collider.tag == "Ground") {		isJumping = false;
 			onPlatform = false;
 			anim.SetBool("IsWalking", true);
 		}

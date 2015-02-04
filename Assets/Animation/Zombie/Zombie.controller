@@ -5,16 +5,16 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: PlayerAnimatorController
+  m_Name: Zombie
   serializedVersion: 2
   m_AnimatorParameters:
-  - m_Name: IsWalking
+  - m_Name: move
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 0
+    m_DefaultBool: 1
     m_Controller: {fileID: 9100000}
-  - m_Name: Die
+  - m_Name: dead
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -39,60 +39,40 @@ Transition:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_SrcState: {fileID: 0}
-  m_DstState: {fileID: 0}
-  m_TransitionDuration: .0169014074
-  m_TransitionOffset: 0
-  m_Conditions:
-  - m_ConditionMode: 5
-    m_ConditionEvent: 
-    m_EventTreshold: 0
-    m_ExitTime: .983098567
-  m_Atomic: 1
-  m_Solo: 0
-  m_Mute: 0
-  m_CanTransitionToSelf: 0
---- !u!1101 &110140434
-Transition:
-  serializedVersion: 2
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_SrcState: {fileID: 110253506}
-  m_DstState: {fileID: 110200000}
-  m_TransitionDuration: .0199999996
+  m_SrcState: {fileID: 110200000}
+  m_DstState: {fileID: 110281551}
+  m_TransitionDuration: .0250000004
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: IsWalking
+    m_ConditionEvent: move
     m_EventTreshold: 0
-    m_ExitTime: .980000019
+    m_ExitTime: .975000024
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
   m_CanTransitionToSelf: 0
---- !u!1101 &110155108
+--- !u!1101 &110116249
 Transition:
   serializedVersion: 2
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: 
-  m_SrcState: {fileID: 110200000}
-  m_DstState: {fileID: 110253506}
-  m_TransitionDuration: .299999982
+  m_SrcState: {fileID: 110281551}
+  m_DstState: {fileID: 110200000}
+  m_TransitionDuration: .200000003
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: IsWalking
+    m_ConditionEvent: move
     m_EventTreshold: 0
-    m_ExitTime: .700000048
+    m_ExitTime: .800000012
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
   m_CanTransitionToSelf: 0
---- !u!1101 &110173641
+--- !u!1101 &110195478
 Transition:
   serializedVersion: 2
   m_ObjectHideFlags: 3
@@ -100,12 +80,12 @@ Transition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_SrcState: {fileID: 0}
-  m_DstState: {fileID: 110207477}
+  m_DstState: {fileID: 110294755}
   m_TransitionDuration: .100000001
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Die
+    m_ConditionEvent: dead
     m_EventTreshold: 0
     m_ExitTime: .899999976
   m_Atomic: 1
@@ -117,43 +97,43 @@ State:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Move
-  m_Speed: 1.20000005
+  m_Name: Idle
+  m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 7400000, guid: f1d84cc28597f5641a3d9cbc4df7e306, type: 3}
+  - {fileID: 7400002, guid: be66986effd141b4992d2d78be127139, type: 3}
   m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: 528, y: 48, z: 0}
+  m_Position: {x: 240, y: -60, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
---- !u!1102 &110207477
+--- !u!1102 &110281551
+State:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Move
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Motions:
+  - {fileID: 7400000, guid: be66986effd141b4992d2d78be127139, type: 3}
+  m_ParentStateMachine: {fileID: 110700000}
+  m_Position: {x: 240, y: 24, z: 0}
+  m_IKOnFeet: 0
+  m_Mirror: 0
+  m_Tag: 
+--- !u!1102 &110294755
 State:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Death
-  m_Speed: 1.20000005
-  m_CycleOffset: 0
-  m_Motions:
-  - {fileID: 7400000, guid: abad299e3a0f2480290590617e65e2ae, type: 2}
-  m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: 288, y: 48, z: 0}
-  m_IKOnFeet: 0
-  m_Mirror: 0
-  m_Tag: 
---- !u!1102 &110253506
-State:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 7400002, guid: f1d84cc28597f5641a3d9cbc4df7e306, type: 3}
+  - {fileID: 7400000, guid: 0ea302f741e93486d8d5fa761a04b390, type: 2}
   m_ParentStateMachine: {fileID: 110700000}
-  m_Position: {x: 528, y: -96, z: 0}
+  m_Position: {x: 12, y: 24, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -164,29 +144,29 @@ StateMachine:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Base Layer
-  m_DefaultState: {fileID: 110253506}
+  m_DefaultState: {fileID: 110200000}
   m_States:
   - {fileID: 110200000}
-  - {fileID: 110253506}
-  - {fileID: 110207477}
+  - {fileID: 110281551}
+  - {fileID: 110294755}
   m_ChildStateMachine: []
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
     data:
-      first: {fileID: 0}
-      second:
-      - {fileID: 110173641}
+      first: {fileID: 110294755}
+      second: []
     data:
-      first: {fileID: 110253506}
+      first: {fileID: 110281551}
       second:
-      - {fileID: 110140434}
+      - {fileID: 110116249}
     data:
       first: {fileID: 110200000}
       second:
-      - {fileID: 110155108}
+      - {fileID: 110100000}
     data:
-      first: {fileID: 110207477}
-      second: []
+      first: {fileID: 0}
+      second:
+      - {fileID: 110195478}
   m_MotionSetCount: 1
-  m_AnyStatePosition: {x: 312, y: -96, z: 0}
+  m_AnyStatePosition: {x: 36, y: -60, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

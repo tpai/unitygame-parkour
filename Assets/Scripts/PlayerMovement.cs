@@ -4,6 +4,7 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour {
 
 	Animator anim;
+	public bool isDead = false;
 	public bool isJumping = false;
 	public bool onPlatform = false;
 	public float speed = 3f;
@@ -16,7 +17,8 @@ public class PlayerMovement : MonoBehaviour {
 
 	void Update () {
 
-		if(isJumping == false && Input.GetButtonDown("Jump")) {
+		if(isDead == true){}
+		else if(isJumping == false && Input.GetButtonDown("Jump")) {
 			isJumping = true;
 			anim.SetBool("IsWalking", false);
 
@@ -26,14 +28,16 @@ public class PlayerMovement : MonoBehaviour {
 
 			rigidbody.AddForce(new Vector3((onPlatform)?250:0, jumpForce, 0));
 		}
-		else if(onPlatform == true);
+		else if(onPlatform == true){}
 		else {
 			rigidbody.velocity = new Vector3(speed, rigidbody.velocity.y, 0);
 		}
+//		Debug.DrawRay(transform.position + Vector3.up, Vector3.right, Color.green);
 	}
 
 	void OnCollisionEnter (Collision coll) {
-		if(coll.collider.tag == "Ground") {		isJumping = false;
+		if(coll.collider.tag == "Ground") {
+			isJumping = false;
 			onPlatform = false;
 			anim.SetBool("IsWalking", true);
 		}
@@ -43,15 +47,15 @@ public class PlayerMovement : MonoBehaviour {
 		if(coll.collider.tag == "Platform") {
 			isJumping = false;
 			onPlatform = true;
-			/*transform.position = new Vector3(
-				coll.transform.position.x, 
-				transform.position.y, 
-				transform.position.z
-			);*/
 			transform.parent = coll.transform;
 		}
 		else {
 			transform.parent = null;
 		}
+	}
+
+	void Die () {
+		isDead = true;
+		anim.SetTrigger("Die");
 	}
 }

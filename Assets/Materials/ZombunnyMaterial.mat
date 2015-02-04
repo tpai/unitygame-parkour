@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: ZombunnyMaterial
-  m_Shader: {fileID: 4800000, guid: 799a72a7e5f5bec4ca234fd03e089e65, type: 3}
+  m_Shader: {fileID: 13, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -27,11 +27,22 @@ Material:
           m_Texture: {fileID: 2800000, guid: 88a6058e9e986c5409b704b01fbd14be, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Illum
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
           name: _Shininess
         second: .182930306
+      data:
+        first:
+          name: _EmissionLM
+        second: 0
       data:
         first:
           name: _RimPower

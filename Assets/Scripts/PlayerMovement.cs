@@ -32,7 +32,6 @@ public class PlayerMovement : MonoBehaviour {
 		else {
 			rigidbody.velocity = new Vector3(speed, rigidbody.velocity.y, 0);
 		}
-//		Debug.DrawRay(transform.position + Vector3.up, Vector3.right, Color.green);
 	}
 
 	void OnCollisionEnter (Collision coll) {

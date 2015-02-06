@@ -29,8 +29,6 @@ public class KillPlayer : MonoBehaviour {
 				);
 			}
 			other.SendMessage("Die");
-			other.rigidbody.useGravity = false;
-			other.rigidbody.isKinematic = true;
 		}
 	}
 }

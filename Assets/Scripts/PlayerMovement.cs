@@ -53,6 +53,12 @@ public class PlayerMovement : MonoBehaviour {
 		}
 	}
 
+	void OnCollisionExit(Collision coll) {
+		if(coll.collider.tag == "Platform") {
+			isJumping = true;
+		}
+	}
+
 	void Die () {
 		isDead = true;
 		anim.SetTrigger("Die");

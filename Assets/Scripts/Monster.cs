@@ -5,6 +5,7 @@ public class Monster : MonoBehaviour {
 
 	Animator walkAnim;
 	Animator monAnim;
+	public int hp = 1;
 
 	void Start () {
 		walkAnim = transform.Find ("Main").GetComponent<Animator> ();
@@ -12,9 +13,12 @@ public class Monster : MonoBehaviour {
 	}
 	
 	void KillByPlayer () {
-		rigidbody.useGravity = false;
-		rigidbody.isKinematic = true;
-		monAnim.SetTrigger ("dead");
-		walkAnim.enabled = false;
+		hp --;
+		if(hp == 0) {
+			rigidbody.useGravity = false;
+			rigidbody.isKinematic = true;
+			monAnim.SetTrigger ("dead");
+			walkAnim.enabled = false;
+		}
 	}
 }

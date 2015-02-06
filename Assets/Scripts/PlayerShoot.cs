@@ -9,7 +9,7 @@ public class PlayerShoot : MonoBehaviour {
 
 	void Update () {
 
-		if(Input.GetButtonDown ("Fire1")) {
+		if(Input.GetButtonDown ("Fire1") && !GetComponent<PlayerMovement>().isDead) {
 
 			startPos = transform.position + Vector3.right * .8f + Vector3.up * .5f + Vector3.back * .5f;
 

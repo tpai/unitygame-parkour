@@ -565,7 +565,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 400074}
   - 54: {fileID: 5400000}
-  - 114: {fileID: 11400000}
+  - 114: {fileID: 11426418}
+  - 114: {fileID: 11426416}
   m_Layer: 0
   m_Name: MonsterWalk
   m_TagString: Enemy
@@ -600,7 +601,7 @@ GameObject:
   - 95: {fileID: 9500002}
   - 65: {fileID: 6500000}
   m_Layer: 0
-  m_Name: Zombunny
+  m_Name: Animation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -663,7 +664,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_LocalRotation: {x: 0, y: .707106829, z: 0, w: .707106709}
+  m_LocalRotation: {x: 0, y: .707106888, z: 0, w: .707106769}
   m_LocalPosition: {x: 3.13283014, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -764,7 +765,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100022}
-  m_LocalRotation: {x: -.160602435, y: .010572996, z: .984830678, w: -.0648347884}
+  m_LocalRotation: {x: -.16060245, y: .0105729969, z: .984830737, w: -.0648347959}
   m_LocalPosition: {x: -3.89922935e-16, y: -1.26217742e-31, z: .238028452}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1320,7 +1321,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 2, y: 1, z: .670000017}
   m_Center: {x: 0, y: .709999979, z: 0}
 --- !u!95 &9500000
 Animator:
@@ -1352,7 +1353,7 @@ Animator:
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11400000
+--- !u!114 &11426416
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1363,6 +1364,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92cfe6d5639fe4a029575492a3dfe5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11426418
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab554e7f4f0160742bd377b591ca4672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 1
 --- !u!137 &13700000
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

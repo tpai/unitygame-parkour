@@ -4,10 +4,13 @@ using System.Collections;
 
 public class Timer : MonoBehaviour {
 
+	public bool stop = false;
 	float nowTime = 0;
 
 	void Update () {
-		nowTime += Time.deltaTime;
-		GetComponent<Text> ().text = nowTime.ToString("F1")+"m";
+		if(stop == false) {
+			nowTime += Time.deltaTime;
+			GetComponent<Text> ().text = nowTime.ToString("F1")+"m";
+		}
 	}
 }

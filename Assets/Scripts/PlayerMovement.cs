@@ -10,10 +10,12 @@ public class PlayerMovement : MonoBehaviour {
 	public bool onPlatform = false;
 	public float speed = 3f;
 	public float jumpForce = 800f;
+	Timer timer;
 
 	void Start () {
 		anim = GetComponentInChildren<Animator>();
 		anim.SetBool("IsWalking", true);
+		timer = GameObject.Find ("Timer").GetComponent<Timer> ();
 	}
 
 	void Update () {
@@ -70,6 +72,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	void Die () {
 		isDead = true;
+		timer.stop = true;
 		anim.SetTrigger("Die");
 	}
 }

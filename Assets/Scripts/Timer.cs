@@ -8,6 +8,6 @@ public class Timer : MonoBehaviour {
 
 	void Update () {
 		nowTime += Time.deltaTime;
-		GetComponent<Text> ().text = nowTime.ToString ("F2")+"s";
+		GetComponent<Text> ().text = nowTime.ToString("F1")+"m";
 	}
 }

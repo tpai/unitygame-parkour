@@ -18,15 +18,21 @@ public class PlayerMovement : MonoBehaviour {
 
 	void Update () {
 
-		if(
-			isDead == false && 
-			isJumping == false && 
-			Input.GetButtonDown("Jump")
-		) {
-			isJumping = true;
-			jumpPressed = true;
-			anim.SetBool("IsWalking", false);
-		}
+//		if(
+//			isDead == false && 
+//			isJumping == false && 
+//			Input.GetButtonDown("Jump")
+//		) {
+//			isJumping = true;
+//			jumpPressed = true;
+//			anim.SetBool("IsWalking", false);
+//		}
+	}
+
+	public void ApplyJump () {
+		isJumping = true;
+		jumpPressed = true;
+		anim.SetBool("IsWalking", false);
 	}
 
 	void FixedUpdate () {

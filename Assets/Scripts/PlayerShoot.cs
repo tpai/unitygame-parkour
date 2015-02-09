@@ -11,7 +11,11 @@ public class PlayerShoot : MonoBehaviour {
 
 		if(Input.GetButtonDown ("Fire1") && !GetComponent<PlayerMovement>().isDead) {
 
-			startPos = transform.position + Vector3.right * .8f + Vector3.up * .5f + Vector3.back * .5f;
+			startPos = 
+				transform.position + 
+				Vector3.right * .8f + 
+				Vector3.up * .5f + 
+				Vector3.back * .5f;
 
 			gunParticles.particleSystem.Play();
 

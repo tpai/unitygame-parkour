@@ -3696,7 +3696,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1009837746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7070,7 +7070,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1257902783}
   xOffset: 4.38999987
-  damping: 10
+  damping: 5
   lockRotation: 1
 --- !u!1 &2121368148
 GameObject:

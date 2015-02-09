@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Monster : MonoBehaviour {
 
+	ParticleSystem hitParticle;
 	Animator walkAnim;
 	Animator monAnim;
 	public int hp = 1;
@@ -10,10 +11,13 @@ public class Monster : MonoBehaviour {
 	void Start () {
 		walkAnim = transform.Find ("Main").GetComponent<Animator> ();
 		monAnim = transform.Find ("Main").Find ("Animation").GetComponent<Animator> ();
+		hitParticle = GetComponentInChildren<ParticleSystem>();
 	}
 	
-	void KillByPlayer () {
+	void KillByPlayer (Vector3 hitPoint) {
 		hp --;
+		hitParticle.transform.position = hitPoint;
+		hitParticle.Play();
 		if(hp == 0) {
 			rigidbody.useGravity = false;
 			rigidbody.isKinematic = true;

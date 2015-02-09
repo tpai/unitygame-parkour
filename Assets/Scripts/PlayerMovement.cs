@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour {
 	Animator anim;
 	public bool isDead = false;
 	public bool isJumping = false;
+	public bool jumpPressed = false;
 	public bool onPlatform = false;
 	public float speed = 3f;
 	public float jumpForce = 800f;
@@ -17,19 +18,20 @@ public class PlayerMovement : MonoBehaviour {
 
 	void Update () {
 
-		if(isDead == true){}
-		else if(isJumping == false && Input.GetButtonDown("Jump")) {
+		if(isJumping == false && Input.GetButtonDown("Jump")) {
 			isJumping = true;
+			jumpPressed = true;
 			anim.SetBool("IsWalking", false);
-
-			/*float forwardForce;
-			if(onPlatform == true)forwardForce = 400;
-			else forwardForce = 0;*/
-
-			rigidbody.AddForce(new Vector3((onPlatform)?250:0, jumpForce, 0));
 		}
-		else if(onPlatform == true){}
-		else {
+	}
+
+	void FixedUpdate () {
+		if(jumpPressed) {
+			jumpPressed = false;
+			rigidbody.AddForce(new Vector3(0, jumpForce, 0));
+		}
+
+		if(!isDead) {
 			rigidbody.velocity = new Vector3(speed, rigidbody.velocity.y, 0);
 		}
 	}
@@ -40,13 +42,11 @@ public class PlayerMovement : MonoBehaviour {
 			onPlatform = false;
 			anim.SetBool("IsWalking", true);
 		}
-	}
-
-	void OnCollisionStay(Collision coll) {
-		if(coll.collider.tag == "Platform") {
+		else if(coll.collider.tag == "Platform") {
 			isJumping = false;
 			onPlatform = true;
 			transform.parent = coll.transform;
+			anim.SetBool("IsWalking", true);
 		}
 		else {
 			transform.parent = null;
@@ -56,6 +56,7 @@ public class PlayerMovement : MonoBehaviour {
 	void OnCollisionExit(Collision coll) {
 		if(coll.collider.tag == "Platform") {
 			isJumping = true;
+			onPlatform = false;
 		}
 	}
 

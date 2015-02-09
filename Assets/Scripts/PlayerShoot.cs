@@ -24,7 +24,7 @@ public class PlayerShoot : MonoBehaviour {
 			if(Physics.Raycast(ray, out hit, 6f)) {
 				if(hit.transform.tag == "Enemy") {
 					// Destroy (hit.transform.gameObject);
-					hit.transform.SendMessage("KillByPlayer");
+					hit.transform.SendMessage("KillByPlayer", hit.point);
 				}
 				gunLine.SetPosition(1, hit.point);
 			}

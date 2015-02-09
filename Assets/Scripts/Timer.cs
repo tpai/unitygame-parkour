@@ -5,7 +5,7 @@ using System.Collections;
 public class Timer : MonoBehaviour {
 
 	public bool stop = false;
-	float nowTime = 0;
+	public float nowTime = 0;
 
 	void Update () {
 		if(stop == false) {

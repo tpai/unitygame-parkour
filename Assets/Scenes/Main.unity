@@ -2712,6 +2712,7 @@ GameObject:
   - 114: {fileID: 462699656}
   - 95: {fileID: 462699658}
   - 114: {fileID: 462699659}
+  - 114: {fileID: 462699660}
   m_Layer: 5
   m_Name: ResultPanel
   m_TagString: Untagged
@@ -2792,6 +2793,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55205ad28c8845d4f8954194fd5d5ab8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &462699660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 462699654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5d3ac9c9e214214a8a86a521fc634db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &475574596
@@ -4945,7 +4957,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1100744999}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 462699660}
+        m_MethodName: PlayAgain
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1100744999
@@ -5330,6 +5354,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stop: 0
+  nowTime: 0
 --- !u!1 &1249672406
 GameObject:
   m_ObjectHideFlags: 0

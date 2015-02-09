@@ -23,9 +23,7 @@ public class PlayerMovement : MonoBehaviour {
 //			isJumping == false && 
 //			Input.GetButtonDown("Jump")
 //		) {
-//			isJumping = true;
-//			jumpPressed = true;
-//			anim.SetBool("IsWalking", false);
+//			ApplyJump ();
 //		}
 	}
 

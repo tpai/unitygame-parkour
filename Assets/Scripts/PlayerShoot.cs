@@ -9,35 +9,38 @@ public class PlayerShoot : MonoBehaviour {
 
 	void Update () {
 
-		if(Input.GetButtonDown ("Fire1") && !GetComponent<PlayerMovement>().isDead) {
+//		if(Input.GetButtonDown ("Fire1") && !GetComponent<PlayerMovement>().isDead) {
+//			ApplyFire ();
+//		}
+		Debug.DrawRay(startPos, Vector3.right * 6f, Color.green);
+	}
 
-			startPos = 
-				transform.position + 
+	public void ApplyFire () {
+		startPos = 
+			transform.position + 
 				Vector3.right * .8f + 
 				Vector3.up * .5f + 
 				Vector3.back * .5f;
-
-			gunParticles.particleSystem.Play();
-
-			gunLine.enabled = true;
-			gunLine.SetPosition(0, startPos);
-
-			Ray ray = new Ray(startPos, Vector3.right);
-			RaycastHit hit;
-
-			if(Physics.Raycast(ray, out hit, 6f)) {
-				if(hit.transform.tag == "Enemy") {
-					// Destroy (hit.transform.gameObject);
-					hit.transform.SendMessage("KillByPlayer", hit.point);
-				}
-				gunLine.SetPosition(1, hit.point);
+		
+		gunParticles.particleSystem.Play();
+		
+		gunLine.enabled = true;
+		gunLine.SetPosition(0, startPos);
+		
+		Ray ray = new Ray(startPos, Vector3.right);
+		RaycastHit hit;
+		
+		if(Physics.Raycast(ray, out hit, 6f)) {
+			if(hit.transform.tag == "Enemy") {
+				// Destroy (hit.transform.gameObject);
+				hit.transform.SendMessage("KillByPlayer", hit.point);
 			}
-			else {
-				gunLine.SetPosition(1, ray.origin + ray.direction * 6f);
-			}
-			StartCoroutine("FireVanish");
+			gunLine.SetPosition(1, hit.point);
 		}
-		Debug.DrawRay(startPos, Vector3.right * 6f, Color.green);
+		else {
+			gunLine.SetPosition(1, ray.origin + ray.direction * 6f);
+		}
+		StartCoroutine("FireVanish");
 	}
 
 	IEnumerator FireVanish () {

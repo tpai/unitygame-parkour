@@ -44,6 +44,9 @@ public class PlayerMovement : MonoBehaviour {
 		if(!isDead) {
 			rigidbody.velocity = new Vector3(speed, rigidbody.velocity.y, 0);
 		}
+		else {
+			rigidbody.velocity = Vector3.zero;
+		}
 	}
 
 	void OnCollisionEnter (Collision coll) {

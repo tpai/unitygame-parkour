@@ -10,7 +10,7 @@ public class Timer : MonoBehaviour {
 	void Update () {
 		if(stop == false) {
 			nowTime += Time.deltaTime;
-			GetComponent<Text> ().text = nowTime.ToString("F1")+"m";
+			GetComponent<Text> ().text = nowTime.ToString("F0")+"m";
 		}
 	}
 }

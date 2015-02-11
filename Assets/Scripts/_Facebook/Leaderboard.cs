@@ -33,7 +33,6 @@ public class Leaderboard : MonoBehaviour {
 			"/"+FB.AppId+"/scores", 
 			Facebook.HttpMethod.GET, 
 			delegate(FBResult r) {
-				Debug.Log (r.Text);
 				var json = JSON.Parse(r.Text);
 				for(int i=0;i<json["data"].Count;i++) {
 					Transform hero = GameObject.Find ("NO"+(i+1)).transform;

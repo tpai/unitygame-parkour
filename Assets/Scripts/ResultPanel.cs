@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using SimpleJSON;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,14 +25,14 @@ public class ResultPanel : MonoBehaviour {
 			mileage.GetComponent<Text>().text = score+"m";
 
 			if(FB.IsLoggedIn) {
-				UpdateScore (score);
+				CheckScore (score);
 			}
 			else {
 				FB.Login(
 					"email,publish_actions,user_friends", 
 					delegate(FBResult r) {
 						if(FB.IsLoggedIn) {
-							UpdateScore (score);
+							CheckScore (score);
 						}
 					}
 				);
@@ -43,14 +44,31 @@ public class ResultPanel : MonoBehaviour {
 		anim.SetBool("show", show);
 	}
 
+	void CheckScore (string score) {
+		int oldScore = 0;
+
+		FB.API(
+			"/me/scores", 
+			Facebook.HttpMethod.GET, 
+			delegate(FBResult r) {
+				var json = JSON.Parse(r.Text);
+				oldScore = json["data"][0]["score"].AsInt;
+				if(int.Parse(score) > oldScore) {
+					UpdateScore (score);
+				}
+				Debug.Log ("oldScore: "+oldScore);
+			}
+		);
+	}
+
 	void UpdateScore (string score) {
 		var query = new Dictionary<string, string>();
 		query["score"] = score;
-		
+
 		FB.API(
 			"/me/scores", 
 			Facebook.HttpMethod.POST, 
-			delegate(FBResult r) {
+				delegate(FBResult r) {
 				Debug.Log (r.Error);
 			},
 			query

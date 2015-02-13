@@ -8,7 +8,7 @@ public class Player : MonoBehaviour {
 	public bool isJumping = false;
 	public bool jumpPressed = false;
 	public bool onPlatform = false;
-	public float speed = 3f;
+	public float speed = 5f;
 	public float jumpForce = 800f;
 	Timer timer;
 
@@ -27,10 +27,12 @@ public class Player : MonoBehaviour {
 	void FixedUpdate () {
 		if(jumpPressed) {
 			jumpPressed = false;
-			rigidbody.AddForce(new Vector3(0, jumpForce, 0));
+			rigidbody.velocity = new Vector3(speed, 15f, 0);
 		}
 
 		if(isDead)speed = 0;
+		else if(timer.nowTime > 50f)speed = 6f;
+		else if(timer.nowTime > 100f)speed = 7f;
 		rigidbody.velocity = new Vector3(speed, rigidbody.velocity.y, 0);
 	}
 

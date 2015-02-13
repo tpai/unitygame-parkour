@@ -36,7 +36,6 @@ public class Leaderboard : MonoBehaviour {
 				var json = JSON.Parse(r.Text);
 				for(int i=0;i<10;i++) {
 					Transform hero = GameObject.Find ("NO"+(i+1)).transform;
-					
 					if(i >= json["data"].Count)hero.gameObject.SetActive(false);
 					else {
 						id = json["data"][i]["user"]["id"];
@@ -53,7 +52,7 @@ public class Leaderboard : MonoBehaviour {
 	}
 
 	IEnumerator GetFaceTo (Transform hero, string id) {
-		WWW www = new WWW("http://graph.facebook.com/"+id+"/picture");
+		WWW www = new WWW("http://graph.facebook.com/"+id+"/picture?width=300&height=300");
 		yield return www;
 		if(www.error == null) {
 			hero.GetComponent<RawImage>().texture = www.texture;

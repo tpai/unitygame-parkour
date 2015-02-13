@@ -48,7 +48,7 @@ public class ResultPanel : MonoBehaviour {
 		int oldScore = 0;
 
 		FB.API(
-			"/me/scores", 
+			"/"+FB.UserId+"/scores", 
 			Facebook.HttpMethod.GET, 
 			delegate(FBResult r) {
 				var json = JSON.Parse(r.Text);
@@ -56,7 +56,6 @@ public class ResultPanel : MonoBehaviour {
 				if(int.Parse(score) > oldScore) {
 					UpdateScore (score);
 				}
-				Debug.Log ("oldScore: "+oldScore);
 			}
 		);
 	}
@@ -66,7 +65,7 @@ public class ResultPanel : MonoBehaviour {
 		query["score"] = score;
 
 		FB.API(
-			"/me/scores", 
+			"/"+FB.UserId+"/scores", 
 			Facebook.HttpMethod.POST, 
 				delegate(FBResult r) {
 				Debug.Log (r.Error);

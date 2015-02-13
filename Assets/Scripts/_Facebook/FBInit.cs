@@ -12,7 +12,7 @@ public class FBInit : MonoBehaviour {
 			GameObject.DontDestroyOnLoad(this.gameObject);
 		}
 		else {
-			GameObject.Destroy(this);
+			Destroy (gameObject);
 		}
 	}
 	

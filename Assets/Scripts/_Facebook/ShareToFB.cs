@@ -38,7 +38,7 @@ public class ShareToFB : MonoBehaviour {
 		
 		var wwwForm = new WWWForm();
 		wwwForm.AddBinaryData("image", screenshot, "screenshot.png");
-		wwwForm.AddField("message", "Check out my best record!");
+		wwwForm.AddField("message", "來挑戰我的最高紀錄吧！");
 		
 		FB.API(
 			"/me/photos",

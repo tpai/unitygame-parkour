@@ -41,12 +41,8 @@ public class PlayerMovement : MonoBehaviour {
 			rigidbody.AddForce(new Vector3(0, jumpForce, 0));
 		}
 
-		if(!isDead) {
-			rigidbody.velocity = new Vector3(speed, rigidbody.velocity.y, 0);
-		}
-		else {
-			rigidbody.velocity = Vector3.zero;
-		}
+		if(isDead)speed = 0;
+		rigidbody.velocity = new Vector3(speed, rigidbody.velocity.y, 0);
 	}
 
 	void OnCollisionEnter (Collision coll) {

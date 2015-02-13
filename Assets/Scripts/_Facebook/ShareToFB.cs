@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class ShareToFB : MonoBehaviour {
@@ -27,6 +28,8 @@ public class ShareToFB : MonoBehaviour {
 		yield return new WaitForSeconds(.5f);
 #if UNITY_EDITOR
 		Debug.Log ("Capture screenshot and share.");
+		GetComponent<Button>().interactable = false;
+		transform.parent.SendMessage("Show", true);
 #elif UNITY_ANDROID
 		var snap = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
 		snap.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
@@ -41,7 +44,8 @@ public class ShareToFB : MonoBehaviour {
 			"/me/photos",
 			Facebook.HttpMethod.POST,
 			delegate (FBResult r) {
-				Application.LoadLevel(0);
+				GetComponent<Button>().interactable = false;
+				transform.parent.SendMessage("Show", true);
 			},
 			wwwForm
 		);

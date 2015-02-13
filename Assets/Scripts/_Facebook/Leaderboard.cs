@@ -34,16 +34,19 @@ public class Leaderboard : MonoBehaviour {
 			Facebook.HttpMethod.GET, 
 			delegate(FBResult r) {
 				var json = JSON.Parse(r.Text);
-				for(int i=0;i<json["data"].Count;i++) {
+				for(int i=0;i<10;i++) {
 					Transform hero = GameObject.Find ("NO"+(i+1)).transform;
 					
-					id = json["data"][i]["user"]["id"];
-					name = json["data"][i]["user"]["name"];
-					score = json["data"][i]["score"].AsInt;
-					
-					hero.Find ("Name").GetComponent<Text>().text = name;
-					hero.Find ("Score").GetComponent<Text>().text = score.ToString()+"m";
-					StartCoroutine(GetFaceTo(hero, id));
+					if(i >= json["data"].Count)hero.gameObject.SetActive(false);
+					else {
+						id = json["data"][i]["user"]["id"];
+						name = json["data"][i]["user"]["name"];
+						score = json["data"][i]["score"].AsInt;
+						
+						hero.Find ("Name").GetComponent<Text>().text = name;
+						hero.Find ("Score").GetComponent<Text>().text = score.ToString()+"m";
+						StartCoroutine(GetFaceTo(hero, id));
+					}
 				}
 		}
 		);

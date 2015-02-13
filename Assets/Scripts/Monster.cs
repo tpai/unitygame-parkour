@@ -8,6 +8,9 @@ public class Monster : MonoBehaviour {
 	Animator monAnim;
 	public int hp = 1;
 
+	public int monId;
+	public AudioClip[] monSFX;
+
 	void Start () {
 		walkAnim = transform.Find ("Main").GetComponent<Animator> ();
 		monAnim = transform.Find ("Main").Find ("Animation").GetComponent<Animator> ();
@@ -23,6 +26,13 @@ public class Monster : MonoBehaviour {
 			rigidbody.isKinematic = true;
 			monAnim.SetTrigger ("dead");
 			walkAnim.enabled = false;
+
+			audio.clip = monSFX[monId+1];
+			audio.Play();
+		}
+		else {
+			audio.clip = monSFX[monId];
+			audio.Play();
 		}
 	}
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerMovement : MonoBehaviour {
+public class Player : MonoBehaviour {
 
 	Animator anim;
 	public bool isDead = false;
@@ -16,17 +16,6 @@ public class PlayerMovement : MonoBehaviour {
 		anim = GetComponentInChildren<Animator>();
 		anim.SetBool("IsWalking", true);
 		timer = GameObject.Find ("Timer").GetComponent<Timer> ();
-	}
-
-	void Update () {
-
-//		if(
-//			isDead == false && 
-//			isJumping == false && 
-//			Input.GetButtonDown("Jump")
-//		) {
-//			ApplyJump ();
-//		}
 	}
 
 	public void ApplyJump () {
@@ -73,5 +62,8 @@ public class PlayerMovement : MonoBehaviour {
 		isDead = true;
 		timer.stop = true;
 		anim.SetTrigger("Die");
+
+		SendMessage("DieSound");
+		GameObject.Find ("Camera").audio.Stop ();
 	}
 }

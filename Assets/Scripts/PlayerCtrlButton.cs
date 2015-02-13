@@ -5,11 +5,11 @@ public class PlayerCtrlButton : MonoBehaviour {
 
 	public void ButtonClick (string buttonType) {
 
-		PlayerMovement playermov = GameObject.Find ("Player").GetComponent<PlayerMovement> ();
+		Player player = GameObject.Find ("Player").GetComponent<Player> ();
 		PlayerShoot playershoo = GameObject.Find ("Player").GetComponent<PlayerShoot> ();
 
-		bool isDead = playermov.isDead;
-		bool isJumping = playermov.isJumping;
+		bool isDead = player.isDead;
+		bool isJumping = player.isJumping;
 
 		if(buttonType == "Shoot") {
 			// shoot
@@ -23,7 +23,7 @@ public class PlayerCtrlButton : MonoBehaviour {
 				isDead == false && 
 				isJumping == false
 			) {
-				playermov.ApplyJump();
+				player.ApplyJump();
 			}
 		}
 	}

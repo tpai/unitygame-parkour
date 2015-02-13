@@ -4,12 +4,7 @@ using System.Collections;
 public class PlayerShoot : MonoBehaviour {
 
 	public Transform gunParticles;
-	public LineRenderer gunLine;
 	Vector3 startPos;
-
-	void Update () {
-//		Debug.DrawRay(startPos, Vector3.right * 8f, Color.green);
-	}
 
 	public void ApplyFire () {
 		startPos = 

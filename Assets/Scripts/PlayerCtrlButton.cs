@@ -1,7 +1,20 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerCtrlButton : MonoBehaviour {
+
+	bool hiddenTip = false;
+
+	void HideTip () {
+		if(!hiddenTip) {
+			hiddenTip = true;
+			GameObject.Find ("Jump").GetComponent<Image>().color = Color.clear;
+			GameObject.Find ("Jump").transform.Find("Text").GetComponent<Text>().color = Color.clear;
+			GameObject.Find ("Shoot").GetComponent<Image>().color = Color.clear;
+			GameObject.Find ("Shoot").transform.Find("Text").GetComponent<Text>().color = Color.clear;
+		}
+	}
 
 	public void ButtonClick (string buttonType) {
 
@@ -26,5 +39,7 @@ public class PlayerCtrlButton : MonoBehaviour {
 				player.ApplyJump();
 			}
 		}
+
+		HideTip ();
 	}
 }

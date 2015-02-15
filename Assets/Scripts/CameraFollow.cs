@@ -16,7 +16,7 @@ public class CameraFollow : MonoBehaviour {
 		
 		transform.LookAt (target);
 
-		Quaternion rot = Quaternion.identity; // (0, 0, 0)
+		Quaternion rot = Quaternion.identity;
 		rot.eulerAngles = new Vector3(8, 0, 0);
 		transform.localRotation = rot;
 	}

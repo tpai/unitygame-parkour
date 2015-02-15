@@ -15,7 +15,7 @@ public class BlockSpawner : MonoBehaviour {
 
 	void CheckBlocks () {
 		Vector3 playerPos = GameObject.Find ("Player").transform.position;
-		if(playerPos.x > 80 * spawnTime) {
+		if(playerPos.x > 100 * spawnTime - 20) {
 			SpawnBlocks ();
 		}
 	}
@@ -25,7 +25,6 @@ public class BlockSpawner : MonoBehaviour {
 		if(timer.nowTime >= 100f)range = blocks.Length;
 		else if(timer.nowTime >= 50f)range = blocks.Length - 3;
 		else range = blocks.Length - 6;
-
 
 		int from = spawnTime * 10 + 1;
 		int end = from + 10;
@@ -38,14 +37,15 @@ public class BlockSpawner : MonoBehaviour {
 			obj.transform.parent = transform;
 			obj.name = "Block"+i;
 		}
-		spawnTime ++;
 
-		if(spawnTime > 2) {
-			from = (spawnTime - 3) * 10 + 1;
+		if(spawnTime > 1) {
+			from = (spawnTime - 2) * 10 + 1;
 			end = from + 10;
 			for(int i=from;i<end;i++) {
 				Destroy (transform.Find ("Block"+i).gameObject);
 			}
 		}
+
+		spawnTime ++;
 	}
 }

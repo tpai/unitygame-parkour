@@ -22,8 +22,8 @@ public class BlockSpawner : MonoBehaviour {
 
 	void SpawnBlocks () {
 		int range;
-		if(timer.nowTime >= 100f)range = blocks.Length;
-		else if(timer.nowTime >= 50f)range = blocks.Length - 3;
+		if(timer.nowTime >= 60f)range = blocks.Length;
+		else if(timer.nowTime >= 30f)range = blocks.Length - 3;
 		else range = blocks.Length - 6;
 
 		int from = spawnTime * 10 + 1;

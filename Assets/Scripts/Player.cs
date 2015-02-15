@@ -19,20 +19,23 @@ public class Player : MonoBehaviour {
 	}
 
 	public void ApplyJump () {
-		isJumping = true;
-		jumpPressed = true;
-		anim.SetBool("IsWalking", false);
+		if(!isJumping) {
+			jumpPressed = true;
+			anim.SetBool("IsWalking", false);
+		}
 	}
 
 	void FixedUpdate () {
 		if(jumpPressed) {
+			isJumping = true;
 			jumpPressed = false;
 			rigidbody.velocity = new Vector3(speed, 15f, 0);
+			SendMessage("JumpSound");
 		}
 
 		if(isDead)speed = 0;
-		else if(timer.nowTime > 50f)speed = 6f;
-		else if(timer.nowTime > 100f)speed = 7f;
+		else if(timer.nowTime > 30f)speed = 6f;
+		else if(timer.nowTime > 60f)speed = 7f;
 		rigidbody.velocity = new Vector3(speed, rigidbody.velocity.y, 0);
 	}
 

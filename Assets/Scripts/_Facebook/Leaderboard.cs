@@ -2,24 +2,55 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Leaderboard : MonoBehaviour {
 
 	void Start () {
 		if(FB.IsLoggedIn) {
-			GetAllScore ();
+			CheckScore ();
 		}
 		else {
-			// 登入
 			FB.Login(
 				"email,publish_actions,user_friends", 
 				delegate(FBResult r) {
 					if(FB.IsLoggedIn) {
-						GetAllScore ();
+						CheckScore ();
 					}
 				}
 			);
 		}
+	}
+
+	void CheckScore () {
+		int oldScore = 0;
+		int newScore = int.Parse(PlayerPrefs.GetString("nowScore"));
+		
+		FB.API(
+			"/"+FB.UserId+"/scores", 
+			Facebook.HttpMethod.GET, 
+			delegate(FBResult r) {
+				var json = JSON.Parse(r.Text);
+				oldScore = json["data"][0]["score"].AsInt;
+				if(newScore > oldScore) {
+					UpdateScore (newScore.ToString());
+				}
+			}
+		);
+	}
+	
+	void UpdateScore (string score) {
+		var query = new Dictionary<string, string>();
+		query["score"] = score;
+		
+		FB.API(
+			"/"+FB.UserId+"/scores", 
+			Facebook.HttpMethod.POST, 
+			delegate(FBResult r) {
+				GetAllScore ();
+			},
+			query
+		);
 	}
 
 	void GetAllScore () {
@@ -47,7 +78,7 @@ public class Leaderboard : MonoBehaviour {
 						StartCoroutine(GetFaceTo(hero, id));
 					}
 				}
-		}
+			}
 		);
 	}
 

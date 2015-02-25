@@ -15,6 +15,10 @@ public class ResultPanel : MonoBehaviour {
 		timer = GameObject.Find ("Timer").GetComponent<Timer> ();
 		mileage = transform.Find ("Mileage");
 		anim = GetComponent<Animator> ();
+
+		if(PlayerPrefs.GetString("topScore") == "") { 
+			PlayerPrefs.SetString("topScore", "0");
+		}
 	}
 	
 	void Update () {

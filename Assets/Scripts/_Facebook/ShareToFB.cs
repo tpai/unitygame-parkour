@@ -3,7 +3,13 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class ShareToFB : MonoBehaviour {
-	
+
+	Animator shareToFBPanel_anim;
+
+	void Start () {
+		shareToFBPanel_anim = transform.parent.GetComponent<Animator> ();
+	}
+
 	public void ButtonClick () {
 		if(FB.IsLoggedIn) {
 			StartCoroutine("ApplyShare");
@@ -21,15 +27,14 @@ public class ShareToFB : MonoBehaviour {
 	}
 
 	IEnumerator ApplyShare () {
-
-		// hide result panel
-		transform.parent.SendMessage("Show", false);
+		shareToFBPanel_anim.SetBool ("show", false);
+		string message = transform.parent.Find ("Message").Find ("Text").GetComponent<Text> ().text;
 
 		yield return new WaitForSeconds(.5f);
 #if UNITY_EDITOR
 		Debug.Log ("Capture screenshot and share.");
-		GetComponent<Button>().interactable = false;
-		transform.parent.SendMessage("Show", true);
+		Debug.Log ("Message: "+message);
+		GameObject.Find ("ResultPanel").SendMessage("ShareToFB", false);
 #elif UNITY_ANDROID
 		var snap = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
 		snap.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
@@ -38,14 +43,13 @@ public class ShareToFB : MonoBehaviour {
 		
 		var wwwForm = new WWWForm();
 		wwwForm.AddBinaryData("image", screenshot, "screenshot.png");
-		wwwForm.AddField("message", "來挑戰我的最高紀錄吧！");
+		wwwForm.AddField("message", message);
 		
 		FB.API(
 			"/me/photos",
 			Facebook.HttpMethod.POST,
 			delegate (FBResult r) {
-				GetComponent<Button>().interactable = false;
-				transform.parent.SendMessage("Show", true);
+				GameObject.Find("ResultPanel").SendMessage("ShareToFB", false);
 			},
 			wwwForm
 		);

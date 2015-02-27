@@ -35,6 +35,9 @@ public class Leaderboard : MonoBehaviour {
 				if(newScore > oldScore) {
 					UpdateScore (newScore.ToString());
 				}
+				else {
+					GetAllScore ();
+				}
 			}
 		);
 	}

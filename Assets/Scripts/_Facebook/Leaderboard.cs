@@ -7,6 +7,7 @@ using System.Collections.Generic;
 public class Leaderboard : MonoBehaviour {
 
 	void Start () {
+
 		if(FB.IsLoggedIn) {
 			CheckScore ();
 		}

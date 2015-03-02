@@ -9,6 +9,10 @@ public class ResultPanel : MonoBehaviour {
 	Timer timer;
 	Animator anim;
 	Transform mileage;
+	[SerializeField]
+	Transform leaderboard;
+	[SerializeField]
+	Transform sharetofb;
 	bool showing = false;
 
 	void Start () {
@@ -38,5 +42,18 @@ public class ResultPanel : MonoBehaviour {
 
 	void Show (bool show) {
 		anim.SetBool("show", show);
+
+		if(!Internet.IsAvailable ()) {
+			leaderboard.GetComponent<Button>().interactable = false;
+			leaderboard.transform.Find ("Text").GetComponent<Text>().text = "No Wifi";
+			sharetofb.GetComponent<Button>().interactable = false;
+			sharetofb.transform.Find ("Text").GetComponent<Text>().text = "No Wifi";
+		}
+		else {
+			leaderboard.GetComponent<Button>().interactable = true;
+			leaderboard.transform.Find ("Text").GetComponent<Text>().text = "Leaderboard";
+			sharetofb.GetComponent<Button>().interactable = true;
+			sharetofb.transform.Find ("Text").GetComponent<Text>().text = "Share To FB";
+		}
 	}
 }

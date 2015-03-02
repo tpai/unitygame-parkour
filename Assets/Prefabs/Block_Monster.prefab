@@ -1464,7 +1464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab554e7f4f0160742bd377b591ca4672, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1
+  hp: 3
   monId: 0
   monSFX:
   - {fileID: 8300000, guid: 02e6208ec76314158a9f548f51fe9f11, type: 3}

@@ -13,7 +13,7 @@ public class PlayerShoot : MonoBehaviour {
 				Vector3.up * .5f + 
 				Vector3.back * .5f;
 		
-		gunParticles.particleSystem.Play();
+		gunParticles.GetComponent<ParticleSystem>().Play();
 
 		Ray ray = new Ray(startPos, Vector3.right);
 		RaycastHit hit;

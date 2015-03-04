@@ -29,14 +29,14 @@ public class Player : MonoBehaviour {
 		if(jumpPressed) {
 			isJumping = true;
 			jumpPressed = false;
-			rigidbody.velocity = new Vector3(speed, 15f, 0);
+			GetComponent<Rigidbody>().velocity = new Vector3(speed, 15f, 0);
 			SendMessage("JumpSound");
 		}
 
 		if(isDead)speed = 0;
 		else if(timer.nowTime > 30f)speed = 6f;
 		else if(timer.nowTime > 60f)speed = 7f;
-		rigidbody.velocity = new Vector3(speed, rigidbody.velocity.y, 0);
+		GetComponent<Rigidbody>().velocity = new Vector3(speed, GetComponent<Rigidbody>().velocity.y, 0);
 	}
 
 	void OnCollisionEnter (Collision coll) {
@@ -69,6 +69,6 @@ public class Player : MonoBehaviour {
 		anim.SetTrigger("Die");
 
 		SendMessage("DieSound");
-		GameObject.Find ("Camera").audio.Stop ();
+		GameObject.Find ("Camera").GetComponent<AudioSource>().Stop ();
 	}
 }

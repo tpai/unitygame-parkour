@@ -22,17 +22,17 @@ public class Monster : MonoBehaviour {
 		hitParticle.transform.position = hitPoint;
 		hitParticle.Play();
 		if(hp == 0) {
-			rigidbody.useGravity = false;
-			rigidbody.isKinematic = true;
+			GetComponent<Rigidbody>().useGravity = false;
+			GetComponent<Rigidbody>().isKinematic = true;
 			monAnim.SetTrigger ("dead");
 			walkAnim.enabled = false;
 
-			audio.clip = monSFX[monId+1];
-			audio.Play();
+			GetComponent<AudioSource>().clip = monSFX[monId+1];
+			GetComponent<AudioSource>().Play();
 		}
 		else {
-			audio.clip = monSFX[monId];
-			audio.Play();
+			GetComponent<AudioSource>().clip = monSFX[monId];
+			GetComponent<AudioSource>().Play();
 		}
 	}
 }

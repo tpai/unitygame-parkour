@@ -12,20 +12,20 @@ public class PlayerSFX : MonoBehaviour {
 
 	public void JumpSound () {
 		if(!player.isDead) {
-			audio.clip = clips[0];
-			audio.Play();
+			GetComponent<AudioSource>().clip = clips[0];
+			GetComponent<AudioSource>().Play();
 		}
 	}
 
 	public void ShootSound () {
 		if(!player.isDead) {
-			audio.clip = clips[1];
-			audio.Play();
+			GetComponent<AudioSource>().clip = clips[1];
+			GetComponent<AudioSource>().Play();
 		}
 	}
 
 	public void DieSound () {
-		audio.clip = clips[2];
-		audio.Play ();
+		GetComponent<AudioSource>().clip = clips[2];
+		GetComponent<AudioSource>().Play ();
 	}
 }
